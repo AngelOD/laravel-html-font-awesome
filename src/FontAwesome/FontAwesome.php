@@ -46,12 +46,61 @@ class FontAwesome
      * Insert a FontAwesome icon
      *
      * @param string $name Name of the icon (without any 'fa-' prefix)
+     * @param string $style The type of FA5 icon or leave empty for FA4
      *
      * @return \MarvinLabs\Html\FontAwesome\Elements\FontAwesomeIcon
      */
-    public function icon($name)
+    public function icon($name, $style='')
     {
-        return FontAwesomeIcon::create()->name($name);
+        return FontAwesomeIcon::create()->name($name, $style);
+    }
+
+    /**
+     * Convenience method for FA5 solid icons
+     *
+     * @param string $name Name of the icon (without any 'fa-' prefix)
+     *
+     * @return \MarvinLabs\Html\FontAwesome\Elements\FontAwesomeIcon
+     */
+    public function solidIcon($name)
+    {
+        return $this->icon($name, 'solid');
+    }
+
+    /**
+     * Convenience method for FA5 regular icons (FA5 PRO access required)
+     *
+     * @param string $name Name of the icon (without any 'fa-' prefix)
+     *
+     * @return \MarvinLabs\Html\FontAwesome\Elements\FontAwesomeIcon
+     */
+    public function regularIcon($name)
+    {
+        return $this->icon($name, 'regular');
+    }
+
+    /**
+     * Convenience method for FA5 brand icons
+     *
+     * @param string $name Name of the icon (without any 'fa-' prefix)
+     *
+     * @return \MarvinLabs\Html\FontAwesome\Elements\FontAwesomeIcon
+     */
+    public function brandIcon($name)
+    {
+        return $this->icon($name, 'brand');
+    }
+
+    /**
+     * Convenience method for FA5 light icons (FA5 PRO access required)
+     *
+     * @param string $name Name of the icon (without any 'fa-' prefix)
+     *
+     * @return \MarvinLabs\Html\FontAwesome\Elements\FontAwesomeIcon
+     */
+    public function lightIcon($name)
+    {
+        return $this->icon($name, 'light');
     }
 
     /**

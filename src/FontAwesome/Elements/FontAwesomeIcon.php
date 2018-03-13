@@ -21,15 +21,21 @@ class FontAwesomeIcon extends BaseElement
      *
      * @return static
      */
-    public function name($name)
+    public function name($name, $style="solid")
     {
-        return $this->addClass(['fa', "fa-{$name}"]);
+        $styleLetter = strtolower(substr($style, 0, 1));
+
+        if (!empty($styleLetter) && !in_array($styleLetter, ['b', 'l', 'r', 's'])) {
+            $styleLetter = 's';
+        }
+
+        return $this->addClass(['fa' . $styleLetter, "fa-{$name}"]);
     }
 
     /**
      * To increase icon sizes relative to their container.
      *
-     * @param string $size One of: lg, 2x, 3x, 4x, 5x
+     * @param string $size One of: xs, sm, lg, 2x through 10x
      *
      * @return static
      *
@@ -37,9 +43,9 @@ class FontAwesomeIcon extends BaseElement
      */
     public function size($size = 'lg')
     {
-        if ( !in_array($size, ['lg', '2x', '3x', '4x', '5x'], true))
+        if ( !in_array($size, ['xs', 'sm', 'lg', '2x', '3x', '4x', '5x', '6x', '7x', '8x', '9x', '10x'], true))
         {
-            throw new \InvalidArgumentException('Invalid icon size. Should either be: lg, 2x, 3x, 4x, 5x');
+            throw new \InvalidArgumentException('Invalid icon size. Should either be: xs, sm, lg, 2x through 10x');
         }
 
         return $this->addClass("fa-{$size}");
